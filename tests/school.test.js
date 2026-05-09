@@ -15,8 +15,12 @@ describe('School Management API Suite', () => {
 
     describe('POST /api/addSchool', () => {
         it('should successfully add a school with valid data', async () => {
-            // Mock DB response for successful INSERT
-            pool.execute.mockResolvedValue([{ insertId: 42 }]);
+            // Mock DB response:
+            // First call (SELECT for duplicate check) returns an empty array
+            // Second call (INSERT) returns the new ID
+            pool.execute
+                .mockResolvedValueOnce([[]])
+                .mockResolvedValueOnce([{ insertId: 42 }]);
 
             const response = await request(app)
                 .post('/addSchool')
@@ -30,6 +34,25 @@ describe('School Management API Suite', () => {
             expect(response.status).toBe(201);
             expect(response.body.status).toBe("success");
             expect(response.body.data.id).toBe(42);
+            expect(pool.execute).toHaveBeenCalledTimes(2);
+        });
+
+        it('should reject duplicate schools with a 409 status', async () => {
+            // Mock DB response: SELECT finds an existing school
+            pool.execute.mockResolvedValueOnce([[{ id: 1, name: "Don Bosco High School" }]]);
+
+            const response = await request(app)
+                .post('/addSchool')
+                .send({
+                    name: "Don Bosco High School",
+                    address: "Matunga, Mumbai",
+                    latitude: 19.0269,
+                    longitude: 72.8553
+                });
+
+            expect(response.status).toBe(409);
+            expect(response.body.status).toBe("error");
+            expect(response.body.message).toBe("A school with this name and address already exists");
             expect(pool.execute).toHaveBeenCalledTimes(1);
         });
 
