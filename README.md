@@ -1,7 +1,5 @@
 # School Management API
 
-[![Deploy to Render](https://api.render.com/deploy/badge?repo=SiddhantLahoti/school-management-api)](https://render.com)
-
 A robust and scalable Node.js and Express API for managing school data. The primary feature is the ability to list schools sorted by geographical proximity to a user, calculated efficiently using the Haversine formula directly within the database.
 
 This project is built with a focus on code quality, validation, performance, and developer experience, featuring automated testing and interactive documentation.
