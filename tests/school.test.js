@@ -13,7 +13,7 @@ describe('School Management API Suite', () => {
         jest.clearAllMocks();
     });
 
-    describe('POST /api/addSchool', () => {
+    describe('POST /addSchool', () => {
         it('should successfully add a school with valid data', async () => {
             // Mock DB response:
             // First call (SELECT for duplicate check) returns an empty array
@@ -84,7 +84,7 @@ describe('School Management API Suite', () => {
         });
     });
 
-    describe('GET /api/listSchools', () => {
+    describe('GET /listSchools', () => {
         it('should return schools sorted by proximity to user coordinates', async () => {
             // Mock database returning raw, unsorted records
             const mockDbSchools = [
@@ -95,7 +95,7 @@ describe('School Management API Suite', () => {
 
             // User is at Vile Parle, Mumbai (19.1075, 72.8370)
             const response = await request(app)
-                .get('/api/listSchools')
+                .get('/listSchools')
                 .query({ latitude: 19.1075, longitude: 72.8370 });
 
             expect(response.status).toBe(200);
@@ -109,7 +109,7 @@ describe('School Management API Suite', () => {
 
         it('should fail if user latitude/longitude query params are missing', async () => {
             const response = await request(app)
-                .get('/api/listSchools')
+                .get('/listSchools')
                 .query({ latitude: 19.1075 }); // Missing longitude
 
             expect(response.status).toBe(400);
