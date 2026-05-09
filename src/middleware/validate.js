@@ -1,5 +1,36 @@
 const { z } = require('zod');
 
+// Helper to safely transform and validate coordinates
+const coordinateValidator = (requiredMsg, min, max, type) => z.any()
+    .transform((val) => {
+        // Treat undefined, null, or empty strings as missing values
+        if (val === undefined || val === null || val === '') return undefined;
+        // Otherwise coerce to a number
+        return Number(val);
+    })
+    .superRefine((val, ctx) => {
+        if (val === undefined) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: requiredMsg
+            });
+            return; // Stop further validation for this field
+        }
+        if (isNaN(val)) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: `${type} must be a valid number`
+            });
+            return;
+        }
+        if (val < min || val > max) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: `${type} must be between ${min} and ${max}`
+            });
+        }
+    });
+
 // Schema for adding a school (POST /addSchool)
 const addSchoolSchema = z.object({
     name: z.string({
@@ -12,29 +43,14 @@ const addSchoolSchema = z.object({
         invalid_type_error: "Address must be a string"
     }).trim().min(1, "Address cannot be empty"),
 
-    // Using coerce to safely convert string inputs (from forms) to numbers
-    latitude: z.coerce.number({
-        required_error: "Latitude is required",
-        invalid_type_error: "Latitude must be a valid number"
-    }).min(-90, "Latitude must be >= -90").max(90, "Latitude must be <= 90"),
-
-    longitude: z.coerce.number({
-        required_error: "Longitude is required",
-        invalid_type_error: "Longitude must be a valid number"
-    }).min(-180, "Longitude must be >= -180").max(180, "Longitude must be <= 180")
+    latitude: coordinateValidator("Latitude is required", -90, 90, "Latitude"),
+    longitude: coordinateValidator("Longitude is required", -180, 180, "Longitude")
 });
 
 // Schema for listing schools (GET /listSchools)
 const listSchoolsSchema = z.object({
-    latitude: z.coerce.number({
-        required_error: "User latitude is required to calculate proximity",
-        invalid_type_error: "Latitude must be a valid number"
-    }).min(-90, "Latitude must be >= -90").max(90, "Latitude must be <= 90"),
-
-    longitude: z.coerce.number({
-        required_error: "User longitude is required to calculate proximity",
-        invalid_type_error: "Longitude must be a valid number"
-    }).min(-180, "Longitude must be >= -180").max(180, "Longitude must be <= 180")
+    latitude: coordinateValidator("User latitude is required to calculate proximity", -90, 90, "Latitude"),
+    longitude: coordinateValidator("User longitude is required to calculate proximity", -180, 180, "Longitude")
 });
 
 // Middleware wrappers
@@ -44,7 +60,7 @@ const validateBody = (schema) => (req, res, next) => {
         return res.status(400).json({
             status: "error",
             message: "Validation failed",
-            errors: result.error.errors.map(err => ({
+            errors: result.error.issues.map(err => ({
                 field: err.path.join('.'),
                 message: err.message
             }))
@@ -60,7 +76,7 @@ const validateQuery = (schema) => (req, res, next) => {
         return res.status(400).json({
             status: "error",
             message: "Validation failed",
-            errors: result.error.errors.map(err => ({
+            errors: result.error.issues.map(err => ({
                 field: err.path.join('.'),
                 message: err.message
             }))
