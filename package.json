@@ -1,0 +1,26 @@
+{
+  "name": "school-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "set NODE_ENV=test&& jest --runInBand --detectOpenHandles",
+    "start": "set NODE_ENV=production&& node server.js",
+    "dev": "set NODE_ENV=development&& nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
+}
