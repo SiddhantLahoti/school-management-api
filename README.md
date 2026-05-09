@@ -119,10 +119,14 @@ Once the server is running locally, you can access the interactive Swagger UI do
 
 ### Endpoints
 
-#### `POST /addSchool`
+<details>
+<summary><strong>POST /addSchool</strong></summary>
 
 Adds a new school to the database.
 
+---
+
+##### ✅ Success - Add Standard School
 **Request Body:**
 ```json
 {
@@ -132,22 +136,85 @@ Adds a new school to the database.
   "longitude": -89.6501
 }
 ```
-**Responses:**
-- `201 Created`: If the school is added successfully.
-- `400 Bad Request`: If validation fails (e.g., missing fields, invalid coordinates).
-- `409 Conflict`: If a school with the same name and address already exists.
+**Response:** `201 Created`
 
-#### `GET /listSchools`
+---
+
+##### ✅ Success - Extreme Coordinates
+Demonstrates that coordinates at the edge of the valid range are accepted.
+**Request Body:**
+```json
+{
+  "name": "Polar Research Academy",
+  "address": "Antarctica Base Camp",
+  "latitude": -90.0,
+  "longitude": 180.0
+}
+```
+**Response:** `201 Created`
+
+---
+
+##### ❌ Error - School Already Exists
+Attempting to add a school with a name and address that already exists.
+**Response:** `409 Conflict`
+
+---
+
+##### ❌ Error - Invalid Coordinates Out of Bounds
+**Request Body:**
+```json
+{
+  "name": "Impossible School",
+  "address": "Nowhere",
+  "latitude": 150.0,
+  "longitude": -200.0
+}
+```
+**Response:** `400 Bad Request` with an error message like `"Latitude must be between -90 and 90"`.
+
+---
+
+##### ❌ Error - Missing Address and Coordinates
+**Request Body:**
+```json
+{
+  "name": "Ghost School"
+}
+```
+**Response:** `400 Bad Request` with a list of missing fields.
+
+</details>
+
+<br>
+
+<details>
+<summary><strong>GET /listSchools</strong></summary>
 
 Retrieves a list of all schools, sorted by the nearest distance to the user's provided coordinates.
 
-**Query Parameters:**
-- `latitude` (number, **required**): The user's latitude.
-- `longitude` (number, **required**): The user's longitude.
+---
 
-**Example Request:**
-`GET /listSchools?latitude=19.1075&longitude=72.8370`
+##### ✅ Success - List Schools
+**Request:** `GET /listSchools?latitude=19.1075&longitude=72.8370`
+**Response:** `200 OK` with a sorted list of schools and their distances.
 
-**Responses:**
-- `200 OK`: Returns a sorted list of schools with calculated distances.
-- `400 Bad Request`: If `latitude` or `longitude` are missing or invalid.
+---
+
+##### ❌ Error - Missing Latitude and Longitude Parameter
+**Request:** `GET /listSchools?latitude=19.1075`
+**Response:** `400 Bad Request` with an error message like `"User longitude is required to calculate proximity"`.
+
+---
+
+##### ❌ Error - Invalid Data Type
+**Request:** `GET /listSchools?latitude=abc&longitude=xyz`
+**Response:** `400 Bad Request` with an error message like `"Latitude must be a valid number"`.
+
+---
+
+##### ❌ Error - Latitude Restrictions
+**Request:** `GET /listSchools?latitude=100&longitude=72`
+**Response:** `400 Bad Request` with an error message like `"Latitude must be between -90 and 90"`.
+
+</details>
