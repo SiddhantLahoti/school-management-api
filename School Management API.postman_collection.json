@@ -1,0 +1,896 @@
+{
+  "info": {
+    "_postman_id": "996bba38-9585-4de8-856e-595f0e0193bc",
+    "name": "School Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40994875"
+  },
+  "item": [
+    {
+      "name": "List Schools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://school-management-api-zmem.onrender.com/listSchools?latitude=19.0&longitude=72.8",
+          "protocol": "https",
+          "host": [
+            "school-management-api-zmem",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "19.0"
+            },
+            {
+              "key": "longitude",
+              "value": "72.8"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success - List Schools (User in Mumbai)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/listSchools?latitude=19.0&longitude=72.8",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "listSchools"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "19.0"
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.8"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 200
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 16:52:46 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "433"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"3bb-XH20TXTDVwOVSWJ11g46Aucn0O8\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "516b7d10-95b7-47de"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f92376dfdfd40e7-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"success\",\n    \"count\": 6,\n    \"data\": [\n        {\n            \"id\": 5,\n            \"name\": \"Ocean View High\",\n            \"address\": \"Marine Drive, Churchgate, Mumbai\",\n            \"latitude\": 18.941499710083008,\n            \"longitude\": 72.82350158691406,\n            \"distance\": 6.96\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Gateway International School\",\n            \"address\": \"Apollo Bandar, Colaba, Mumbai\",\n            \"latitude\": 18.922000885009766,\n            \"longitude\": 72.83470153808594,\n            \"distance\": 9.41\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Saraswati High School\",\n            \"address\": \"Vile Parle West, Mumbai\",\n            \"latitude\": 19.107500076293945,\n            \"longitude\": 72.83699798583984,\n            \"distance\": 12.57\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Metro Academy\",\n            \"address\": \"Andheri East, Mumbai\",\n            \"latitude\": 19.117900848388672,\n            \"longitude\": 72.8488998413086,\n            \"distance\": 14.08\n        },\n        {\n            \"id\": 6,\n            \"name\": \"My New Test School\",\n            \"address\": \"123 Test Street, Mumbai\",\n            \"latitude\": 19.12339973449707,\n            \"longitude\": 72.56780242919922,\n            \"distance\": 28\n        },\n        {\n            \"id\": 2,\n            \"name\": \"National Park Public School\",\n            \"address\": \"Borivali East, Mumbai\",\n            \"latitude\": 19.22879981994629,\n            \"longitude\": 72.91819763183594,\n            \"distance\": 28.31\n        }\n    ]\n}"
+        },
+        {
+          "name": "Error - Missing Latitude and Longitude Parameter",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/listSchools",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "listSchools"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "19.0",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.8",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 400
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 17:39:09 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "116"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"e1-Hq8Fy032vkr7zjV0mLUaNjVoUhc\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "37984c31-afee-4b58"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f927b61187fd85a-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"latitude\",\n            \"message\": \"User latitude is required to calculate proximity\"\n        },\n        {\n            \"field\": \"longitude\",\n            \"message\": \"User longitude is required to calculate proximity\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "Error - Invalid Data Types (Strings)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/listSchools?latitude=int&longitude=72.8",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "listSchools"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "int"
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.8"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 400
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 17:44:36 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "95"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"7c-Xvej8yWP2hIkOc3PpQPJ/K+mel8\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "34dcd6fa-78dc-49ec"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f92835b386d3a45-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"latitude\",\n            \"message\": \"Latitude must be a valid number\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "Error - Latitude Restrictions",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/listSchools?latitude=100&longitude=72.8",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "listSchools"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "100"
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.8"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 400
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 18:05:24 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "100"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"80-9zeV9umKBfeCQrnXITMGo19wCAw\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "21958a4b-fa4c-4a2f"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f92a1d3bfa374eb-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"latitude\",\n            \"message\": \"Latitude must be between -90 and 90\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Blackwood High\",\r\n  \"address\": \"12345 Education Lane\",\r\n  \"latitude\": 25.0760,\r\n  \"longitude\": 62.8777\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://school-management-api-zmem.onrender.com/addSchool",
+          "protocol": "https",
+          "host": [
+            "school-management-api-zmem",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success - Add Standard School",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Blackwood High\",\r\n  \"address\": \"12345 Education Lane\",\r\n  \"latitude\": 25.0760,\r\n  \"longitude\": 62.8777\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/addSchool",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 201
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 17:00:38 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "129"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"a9-a/1g9Kp+SpkKE/2xPZ0dnyKPId4\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "5df9b6b6-68d6-47ef"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f9242f1288c2433-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"success\",\n    \"message\": \"School added successfully\",\n    \"data\": {\n        \"id\": 7,\n        \"name\": \"Blackwood High\",\n        \"address\": \"12345 Education Lane\",\n        \"latitude\": 25.076,\n        \"longitude\": 62.8777\n    }\n}"
+        },
+        {
+          "name": "Success - Extreme Coordinates (Edge Case)",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Polar Research Academy\",\r\n    \"address\": \"Antarctica Base Camp\",\r\n    \"latitude\": -89.9999,\r\n    \"longitude\": 179.9999\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/addSchool",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 201
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 17:52:37 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "138"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"b5-jd9vw9OwjcwImcBqpyYmFrKrBZ0\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "465f3f80-68f0-4fa7"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f928f196c958b82-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"success\",\n    \"message\": \"School added successfully\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"Polar Research Academy\",\n        \"address\": \"Antarctica Base Camp\",\n        \"latitude\": -89.9999,\n        \"longitude\": 179.9999\n    }\n}"
+        },
+        {
+          "name": "Error - Invalid Coordinates Out of Bounds",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Impossible School\",\r\n    \"address\": \"Nowhere\",\r\n    \"latitude\": 150.00,\r\n    \"longitude\": 200.00\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/addSchool",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 400
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 17:57:40 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "118"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"c9-HMqdn7Mb2uDnbycJsnQnaSEjz9o\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "66804fc8-0ed4-4558"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f9296813e4f3f47-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"latitude\",\n            \"message\": \"Latitude must be between -90 and 90\"\n        },\n        {\n            \"field\": \"longitude\",\n            \"message\": \"Longitude must be between -180 and 180\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "Error - Missing Address and Coordinates",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Ghost School\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/addSchool",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 400
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 17:58:06 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "143"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"fc-XAg7vI1cTsFgPEpOP2TlGe38zf4\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "316b724f-4b59-4ba0"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f9297242ae93f47-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"address\",\n            \"message\": \"Invalid input: expected string, received undefined\"\n        },\n        {\n            \"field\": \"latitude\",\n            \"message\": \"Latitude is required\"\n        },\n        {\n            \"field\": \"longitude\",\n            \"message\": \"Longitude is required\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "Error - School Already Exists",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Polar Research Academy\",\r\n    \"address\": \"Antarctica Base Camp\",\r\n    \"latitude\": -89.9999,\r\n    \"longitude\": 179.9999\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://school-management-api-zmem.onrender.com/addSchool",
+              "protocol": "https",
+              "host": [
+                "school-management-api-zmem",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 409
+            },
+            {
+              "key": "date",
+              "value": "Sat, 09 May 2026 18:04:44 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "74"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"51-DCMsjnX4MY86uErhQJyCK9vO5WU\""
+            },
+            {
+              "key": "rndr-id",
+              "value": "39ac09ff-1282-4dcc"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "9f92a0cf384474eb-BOM"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"A school with this name and address already exists\"\n}"
+        }
+      ]
+    }
+  ]
+}

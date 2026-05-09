@@ -115,6 +115,12 @@ Once the server is running locally, you can access the interactive Swagger UI do
 
 **Local URL**: `http://localhost:8000/api-docs`
 
+### Postman Collection
+
+A Postman collection with pre-configured requests and examples for all endpoints is included in the root of this repository.
+
+- **File**: `School-Management-API.postman_collection.json`
+
 ### Endpoints
 
 <details>
